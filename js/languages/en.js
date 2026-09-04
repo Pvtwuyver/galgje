@@ -1,0 +1,59 @@
+// English language module for Galgje (Hangman)
+// Registers itself on window.GALGJE_LANG so new languages can be added
+// later without touching the core game logic.
+window.GALGJE_LANG = window.GALGJE_LANG || {};
+
+window.GALGJE_LANG.en = {
+  code: "en",
+  name: "English",
+  flag: "🇬🇧",
+  minLength: 8,
+  alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+  // All words have at least 8 letters, uppercase A-Z only.
+  words: [
+    "COMPUTER", "ELEPHANT", "TELEPHONE", "BUTTERFLY", "MOUNTAIN",
+    "BASKETBALL", "CROCODILE", "DINOSAUR", "UMBRELLA", "CHOCOLATE",
+    "SANDWICH", "BACKPACK", "KEYBOARD", "NOTEBOOK", "SUNFLOWER",
+    "STRAWBERRY", "PINEAPPLE", "WATERMELON", "SKATEBOARD", "TRAMPOLINE",
+    "HELICOPTER", "SUBMARINE", "ASTRONAUT", "TELESCOPE", "MICROSCOPE",
+    "DICTIONARY", "LIBRARIAN", "CLASSROOM", "WHITEBOARD", "SNOWFLAKE",
+    "THUNDERSTORM", "HURRICANE", "EARTHQUAKE", "WATERFALL", "MOUNTAINS",
+    "CAMPFIRE", "FLASHLIGHT", "BACKYARD", "SIDEWALK", "CROSSWALK",
+    "AIRPLANE", "SPACESHIP", "BIRTHDAY", "SANDCASTLE", "SUNGLASSES",
+    "JELLYFISH", "KANGAROO", "RHINOCEROS", "ALLIGATOR", "CHIMPANZEE",
+    "ORANGUTAN", "HEDGEHOG", "SQUIRREL", "LADYBIRD", "DRAGONFLY",
+    "GRASSHOPPER", "CATERPILLAR", "HUMMINGBIRD", "FLAMINGO", "TRIANGLE",
+    "RECTANGLE", "PENTAGON", "CYLINDER", "STAIRCASE", "BOOKSHELF",
+    "CUPBOARD", "REFRIGERATOR", "DISHWASHER", "MICROWAVE", "SAUCEPAN",
+    "COOKBOOK", "TABLECLOTH", "CHANDELIER", "FIREPLACE", "STAIRWELL",
+    "BASEMENT", "DRIVEWAY", "DOORBELL", "WINDOWSILL", "CURTAINS",
+    "BEDSPREAD", "PILLOWCASE", "BLANKETS", "WARDROBE", "SUITCASE",
+    "RAINCOAT", "SNEAKERS", "NECKLACE", "BRACELET", "EARRINGS",
+    "WRISTWATCH", "HANDSHAKE", "FOOTBALL", "BASEBALL", "VOLLEYBALL",
+    "SWIMMING", "GYMNASTICS", "WRESTLING", "MARATHON", "TRIATHLON",
+    "SNOWBOARD", "MOUNTAINEER", "BACKPACKER", "CAMPGROUND", "FIREWORKS",
+    "CARNIVAL", "FESTIVAL", "ORCHESTRA", "SAXOPHONE", "CLARINET",
+    "GUITARIST", "DRUMSTICK", "MICROPHONE", "HEADPHONES", "LOUDSPEAKER",
+    "TELEVISION", "NEWSPAPER", "MAGAZINE", "BOOKSTORE", "BLACKBOARD",
+    "SCIENTIST", "CHEMISTRY", "MATHEMATICS", "GEOGRAPHY", "UNIVERSITY",
+    "GRADUATION", "CERTIFICATE", "KNOWLEDGE", "LANGUAGE", "ALPHABET",
+    "SENTENCE", "PARAGRAPH", "LITERATURE", "ADVENTURE", "MYSTERIOUS",
+    "FANTASTIC", "WONDERFUL", "BEAUTIFUL", "DELICIOUS", "INCREDIBLE",
+    "FRIENDSHIP", "HAPPINESS", "CELEBRATE", "SURPRISE", "CHRISTMAS",
+    "HALLOWEEN", "SKELETON", "WEREWOLF", "GRAVEYARD", "CEMETERY",
+    "LIGHTNING", "BLIZZARD", "AVALANCHE", "VOLCANOES", "CONTINENT",
+    "PENINSULA", "ARCHIPELAGO"
+  ],
+  ui: {
+    pageTitle: "Hangman",
+    heading: "Hangman",
+    languageLabel: "Language",
+    statusPlaying: "Guess the word letter by letter.",
+    statusWin: "You won! The word was {word}.",
+    statusLose: "You lost! The word was {word}.",
+    wrongCountLabel: "Wrong guesses",
+    remainingLabel: "Turns left",
+    newGameButton: "New game",
+    footerNote: "Words always have at least 8 letters."
+  }
+};
