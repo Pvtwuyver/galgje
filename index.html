@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Galgje</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%AA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <h1 class="title"><span class="title-emoji" aria-hidden="true">🎪</span><span id="heading-text">Galgje</span></h1>
+    <div class="language-picker">
+      <label id="language-label" for="language-select">Taal</label>
+      <select id="language-select" aria-label="Kies een taal"></select>
+    </div>
+  </header>
+
+  <main class="game">
+
+    <section class="hangman-panel">
+      <svg id="hangman-svg" viewBox="0 0 220 260" role="img" aria-label="Galgpoppetje">
+        <!-- Galg (altijd zichtbaar) -->
+        <g class="gallows">
+          <line x1="20" y1="245" x2="140" y2="245" />
+          <line x1="50" y1="245" x2="50" y2="20" />
+          <line x1="48" y1="20" x2="150" y2="20" />
+          <line x1="150" y1="20" x2="150" y2="45" />
+          <line x1="20" y1="245" x2="35" y2="225" />
+          <line x1="65" y1="245" x2="50" y2="225" />
+        </g>
+
+        <!-- Poppetje: verschijnt onderdeel voor onderdeel bij elke foute letter -->
+        <g id="figure">
+          <!-- 1: hoofd + scheve hoedje -->
+          <g id="part-1" class="part">
+            <circle cx="150" cy="70" r="22" class="skin" />
+            <path d="M 128 58 Q 150 30 176 52 L 172 58 Q 150 44 132 62 Z" class="hat" />
+            <circle cx="176" cy="50" r="4" class="hat-pom" />
+          </g>
+          <!-- 2: ogen (1 normaal, 1 duizelig kruisje) -->
+          <g id="part-2" class="part">
+            <circle cx="142" cy="66" r="2.6" class="eye" />
+            <line x1="157" y1="63" x2="163" y2="69" class="eye-x" />
+            <line x1="163" y1="63" x2="157" y2="69" class="eye-x" />
+          </g>
+          <!-- 3: mond met tong -->
+          <g id="part-3" class="part">
+            <path d="M 140 80 Q 150 88 162 79" class="mouth" />
+            <path d="M 148 84 Q 151 92 155 84" class="tongue" />
+            <circle cx="137" cy="76" r="3" class="blush" />
+            <circle cx="163" cy="76" r="3" class="blush" />
+          </g>
+          <!-- 4: romp met stippen-shirt en vlinderdas -->
+          <g id="part-4" class="part">
+            <path d="M 150 92 L 150 150" class="limb torso" />
+            <path d="M 132 108 Q 150 96 168 108 L 165 145 Q 150 154 135 145 Z" class="shirt" />
+            <circle cx="143" cy="118" r="2.2" class="dot" />
+            <circle cx="157" cy="126" r="2.2" class="dot" />
+            <circle cx="146" cy="134" r="2.2" class="dot" />
+            <path d="M 144 100 L 150 106 L 156 100 L 150 96 Z" class="bowtie" />
+          </g>
+          <!-- 5: linkerarm, wild in de lucht -->
+          <g id="part-5" class="part">
+            <path d="M 150 105 Q 120 100 112 78" class="limb arm" />
+            <circle cx="112" cy="78" r="5" class="skin" />
+          </g>
+          <!-- 6: rechterarm, wild in de lucht -->
+          <g id="part-6" class="part">
+            <path d="M 150 105 Q 180 100 188 78" class="limb arm" />
+            <circle cx="188" cy="78" r="5" class="skin" />
+          </g>
+          <!-- 7: linkerbeen, scheve sok -->
+          <g id="part-7" class="part">
+            <path d="M 150 150 Q 132 175 128 205" class="limb leg" />
+            <path d="M 121 198 L 135 198 L 133 210 L 123 210 Z" class="sock sock-a" />
+          </g>
+          <!-- 8: rechterbeen met mismatchende schoen -->
+          <g id="part-8" class="part">
+            <path d="M 150 150 Q 168 175 172 205" class="limb leg" />
+            <ellipse cx="176" cy="209" rx="12" ry="6" class="shoe" />
+          </g>
+        </g>
+      </svg>
+      <p class="hangman-caption" id="wrong-count-label">Foute pogingen: 0 / 8</p>
+    </section>
+
+    <section class="info-panel">
+      <p class="status-message" id="status-message" role="status" aria-live="polite">Raad het woord letter voor letter.</p>
+
+      <div class="word-display" id="word-display" aria-label="Het te raden woord"></div>
+
+      <div class="meta-row">
+        <span id="remaining-label">Beurten over: 8</span>
+      </div>
+
+      <div class="keyboard" id="keyboard" role="group" aria-label="Letters"></div>
+
+      <button id="new-game-btn" class="new-game-btn" type="button">Nieuw spel</button>
+
+      <p class="footer-note" id="footer-note">Woorden hebben minimaal 8 letters.</p>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Galgje &middot; gemaakt om te draaien op GitHub Pages</p>
+  </footer>
+
+</div>
+
+<script src="js/languages/nl.js"></script>
+<script src="js/languages/en.js"></script>
+<script src="js/languages/de.js"></script>
+<script src="js/languages/es.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
